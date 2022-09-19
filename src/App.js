@@ -16,17 +16,17 @@ function App() {
   const handleSubmit = event => {
     event.preventDefault()
     if (FormStatus === 'add') {
-        setTodos([...todos, { id: Math.floor(Math.random() * 1000), name: form.name, lastName: form.lastName, state: false }])
+      setTodos([...todos, { id: Math.floor(Math.random() * 1000), name: form.name, lastName: form.lastName, state: false }])
     }
     else {
-        setTodos(todos.map(todo => todo.id === form.id ? form : todo))
+      setTodos(todos.map(todo => todo.id === form.id ? form : todo))
     }
     setForm({ name: '', lastName: '' })
     setFormStatus('add')
-}
-const handleChange = event => {
-  setForm({ ...form, [event.target.name]: event.target.value })
-}
+  }
+  const handleChange = event => {
+    setForm({ ...form, [event.target.name]: event.target.value })
+  }
 
   return (
     <div >
