@@ -3,14 +3,14 @@ import React from 'react';
 const ToDoForm = ({ form,  FormStatus,handleSubmit ,handleChange }) => {
     
     return (
-            <div style={{ margin: "10px" }}>
-                <div>
+            <div >
+                <div style={{ margin: "20px"}}>
                     <form  onSubmit={handleSubmit}>
                         <label>Name:</label>
-                        <input onChange={handleChange} name={'name'} value={form.name} />
+                        <input onChange={handleChange} name={'name'} value={form.name} style={{width:'100%'}} />
                         <label>lastName:</label>
-                        <input onChange={handleChange} name={'lastName'} value={form.lastName} />
-                        <button type={'submit'} >
+                        <input onChange={handleChange} name={'lastName'} value={form.lastName} style={{width:'100%'}}/>
+                        <button type={'submit'} style={{ marginTop: "20px"}} >
                             {FormStatus === 'add' ? 'submit' : 'update'}
                         </button>
                     </form>

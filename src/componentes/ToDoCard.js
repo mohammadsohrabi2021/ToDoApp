@@ -14,7 +14,7 @@ const ToDoCard = ({ todo, todos, setTodos, setFormStatus, setForm }) => {
     return (
         <div >
             {/* {todos.map(todo => ( */}
-                <div style={{ border: 'ipx solid #000', margin: '20px' }}>
+                <div style={{ border: '1px solid #000', margin: '20px', padding:'10px' }}>
                     <div>
                         id:{todo.id}
                     </div>
@@ -27,10 +27,10 @@ const ToDoCard = ({ todo, todos, setTodos, setFormStatus, setForm }) => {
                     <div>
                         lastName:{todo.lastName}
                     </div>
-                    <button onClick={() => handeleDelete(todo.id)}>
+                    <button onClick={() => handeleDelete(todo.id)}style={{  margin: '20px', padding:'5px' }}>
                         delete
                     </button>
-                    <button onClick={() => handleUpdate(todo)}>
+                    <button onClick={() => handleUpdate(todo)}style={{  margin: '20px', padding:'5px' }}>
                         upDate
                     </button>
                 </div>
