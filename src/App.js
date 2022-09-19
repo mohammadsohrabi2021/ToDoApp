@@ -42,8 +42,8 @@ function App() {
             <input onChange={handleChange} name={'name'} value={form.name} />
             <label>lastName:</label>
             <input onChange={handleChange} name={'lastName'} value={form.lastName} />
-            <button type={'submit'}>
-              submit
+            <button type={'submit'} >
+              {FormStatus === 'add' ? 'submit' : 'update'}
             </button>
           </form>
         </div>
@@ -66,7 +66,7 @@ function App() {
             delete
           </button>
           <button onClick={() => handleUpdate(todo)}>
-           upDate
+            upDate
           </button>
         </div>
       ))}
