@@ -10,7 +10,7 @@ const ToDoForm = ({ form,  FormStatus,handleSubmit ,handleChange }) => {
                         <input onChange={handleChange} name={'name'} value={form.name} style={{width:'100%'}} />
                         <label>lastName:</label>
                         <input onChange={handleChange} name={'lastName'} value={form.lastName} style={{width:'100%'}}/>
-                        <button type={'submit'} style={{  marginTop: '20px', padding:'5px' }}>
+                        <button type={'submit'} style={{  marginTop: '20px', padding:'5px' ,cursor:'pointer'}}>
                             {FormStatus === 'add' ? 'submit' : 'update'}
                         </button>
                     </form>
