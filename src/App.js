@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-
+import ToDoCard from './componentes/ToDoCard';
+import ToDoForm from './componentes/ToDoForm';
 function App() {
   const [todos, setTodos] = useState([
     { id: 1, name: "mohammad", state: false, lastName: 'sohrabi' },
@@ -8,68 +9,30 @@ function App() {
     { id: 4, name: "milad", state: true, lastName: 'sohrabi' },
   ])
   const [form, setForm] = useState({ name: '', lastName: '' })
-  const [FormStatus, setFormStatus] = useState({ name: '', lastName: '' })
-  const handeleDelete = id => {
-    setTodos(todos.filter(todo => todo.id !== id))
-  }
-  const handelCheck = id => {
-    setTodos(todos.map(todo => todo.id === id ? { ...todo, state: !todo.state } : todo))
-  }
-  const handleChange = event => {
-    setForm({ ...form, [event.target.name]: event.target.value })
-  }
+  const [FormStatus, setFormStatus] = useState('add')
+
+
+
   const handleSubmit = event => {
     event.preventDefault()
     if (FormStatus === 'add') {
-      setTodos([...todos, { id: Math.floor(Math.random() * 1000), name: form.name, lastName: form.lastName, state: false }])
+        setTodos([...todos, { id: Math.floor(Math.random() * 1000), name: form.name, lastName: form.lastName, state: false }])
     }
     else {
-      setTodos(todos.map(todo => todo.id === form.id ? form : todo))
+        setTodos(todos.map(todo => todo.id === form.id ? form : todo))
     }
     setForm({ name: '', lastName: '' })
     setFormStatus('add')
-  }
-  const handleUpdate = todo => {
-    setFormStatus('upDate')
-    setForm(todo)
-  }
+}
+const handleChange = event => {
+  setForm({ ...form, [event.target.name]: event.target.value })
+}
+
   return (
-    <div style={{ border: 'ipx solid #000', margin: '20px' }}>
-      <div style={{ margin: "10px" }}>
-        <div>
-          <form onSubmit={handleSubmit}>
-            <label>Name:</label>
-            <input onChange={handleChange} name={'name'} value={form.name} />
-            <label>lastName:</label>
-            <input onChange={handleChange} name={'lastName'} value={form.lastName} />
-            <button type={'submit'} >
-              {FormStatus === 'add' ? 'submit' : 'update'}
-            </button>
-          </form>
-        </div>
-      </div>
-      {todos.map(todo => (
-        <div>
-          <div>
-            id:{todo.id}
-          </div>
-          <div>
-            name : {todo.name}
-          </div>
-          <div onClick={() => handelCheck(todo.id)}>
-            state:{todo.state ? 'done' : 'not done'}
-          </div>
-          <div>
-            lastName:{todo.lastName}
-          </div>
-          <button onClick={() => handeleDelete(todo.id)}>
-            delete
-          </button>
-          <button onClick={() => handleUpdate(todo)}>
-            upDate
-          </button>
-        </div>
-      ))}
+    <div >
+
+      <ToDoForm handleChange={handleChange} handleSubmit={handleSubmit} form={form} formStatus={FormStatus} setForm={setForm} setTodos={setTodos} todos={todos} setFormStatus={setFormStatus} />
+      {todos.map(todo => <ToDoCard todo={todo} todos={todos} setForm={setForm} setFormStatus={setFormStatus} setTodos={setTodos} />)}
     </div>
   );
 }
